@@ -1,2 +1,2 @@
 # CppDevelopment
-That rep is my solutions from some cpp cours
+This rep is my solutions from some cpp cours
