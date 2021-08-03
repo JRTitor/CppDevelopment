@@ -66,10 +66,10 @@ bool operator== (const Matrix& lhs, const Matrix& rhs) {
 }
 
 Matrix operator+ (const Matrix& lhs, const Matrix& rhs) {
-  if (lhs.GetNumRows() != rhs.GetNumRows() ||
-  lhs.GetNumColumns() != rhs.GetNumColumns())
-    throw invalid_argument("Matrices sizes are different");
-
+  if (lhs.GetNumRows() != rhs.GetNumRows())
+    throw invalid_argument("Mismatched number of rows");
+  if (lhs.GetNumColumns() != rhs.GetNumColumns())
+    throw invalid_argument("Mismatched number of columns");
   Matrix out;
   out.Reset(lhs.GetNumRows(), rhs.GetNumColumns());
 
@@ -86,9 +86,9 @@ ostream& operator<< (ostream& stream, const Matrix& m) {
   for (int i = 0;   i < m.GetNumRows(); ++i) {
     for(int j = 0; j < m.GetNumColumns(); ++j) {
       stream << m.At(i, j);
-      if(j + 1 < m.GetNumColumns()) cout << ' ';
+      if(j + 1 < m.GetNumColumns()) stream << ' ';
     }
-    cout << '\n';
+    stream << '\n';
   }
   return stream;
 }
